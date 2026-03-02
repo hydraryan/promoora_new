@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -39,7 +38,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
-          <Image src="/logo.png" alt="Promoora" width={140} height={36} className="h-8 sm:h-9 w-auto" priority />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="Promoora" className="h-8 sm:h-9 w-auto" />
         </a>
 
         {/* Desktop Navigation */}

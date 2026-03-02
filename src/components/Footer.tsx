@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const quickLinks = [
   { label: "Services", href: "#services" },
@@ -39,7 +38,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="#" className="inline-block">
-              <Image src="/logo.png" alt="Promoora" width={140} height={36} className="h-8 w-auto" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.png" alt="Promoora" className="h-8 w-auto" />
             </Link>
             <p className="mt-4 text-slate-400 text-sm leading-relaxed max-w-xs">
               A new-generation web development studio helping local businesses
