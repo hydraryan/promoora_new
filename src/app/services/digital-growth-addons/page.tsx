@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -39,6 +41,8 @@ function CheckList({ items }: { items: string[] }) {
 
 export default function DigitalGrowthAddonsPage() {
   return (
+    <>
+    <Navbar />
     <main className="min-h-screen bg-navy-950">
       {/* Hero */}
       <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden">
@@ -185,5 +189,7 @@ export default function DigitalGrowthAddonsPage() {
         </motion.div>
       </section>
     </main>
+    <Footer />
+    </>
   );
 }

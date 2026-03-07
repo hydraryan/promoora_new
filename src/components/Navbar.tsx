@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Packages", href: "#packages" },
-  { label: "Approach", href: "#process" },
-  { label: "Why Us", href: "#why-promoora" },
+  { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Packages", href: "/#packages" },
+  { label: "Approach", href: "/#process" },
+  { label: "Why Us", href: "/#why-promoora" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
@@ -37,29 +39,29 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <Link href="/" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="Promoora" className="h-8 sm:h-9 w-auto" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="relative text-sm text-slate-300 hover:text-white transition-colors duration-300 group"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent rounded-full transition-all duration-300 group-hover:w-full" />
-            </a>
+              <Link
+                key={link.href}
+                href={link.href}
+                className="relative text-sm text-slate-300 hover:text-white transition-colors duration-300 group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent rounded-full transition-all duration-300 group-hover:w-full" />
+              </Link>
           ))}
-          <a
+          <Link
             href="/book-a-call"
             className="ml-4 btn-futuristic py-2.5! px-6! text-sm! rounded-full!"
           >
             Book a Call
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Hamburger */}
@@ -99,28 +101,34 @@ export default function Navbar() {
           >
             <div className="px-6 py-10 flex flex-col gap-6">
               {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.3 }}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-medium text-slate-200 hover:text-accent transition-colors py-2 border-b border-white/5"
-                >
-                  {link.label}
-                </motion.a>
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.08, duration: 0.3 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block text-2xl font-medium text-slate-200 hover:text-accent transition-colors py-2 border-b border-white/5"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
               ))}
-              <motion.a
-                href="/book-a-call"
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.3 }}
-                onClick={() => setMobileOpen(false)}
-                className="mt-4 w-full text-center btn-futuristic text-lg! py-4!"
               >
-                Book a Call
-              </motion.a>
+                <Link
+                  href="/book-a-call"
+                  onClick={() => setMobileOpen(false)}
+                  className="mt-4 block w-full text-center btn-futuristic text-lg! py-4!"
+                >
+                  Book a Call
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
